@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   private textHistory = "";
 
   ngOnInit(): void {
-
+    this.gptModel = this.gptModels[0];
   }
 
   protected onEnter(event: KeyboardEvent) {
