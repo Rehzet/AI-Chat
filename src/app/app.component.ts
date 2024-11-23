@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
   let chatParent = document.createElement("div");
   let chatMsg = document.createElement("p");
 
-  message = this.markdownToHtml(message);
+  message = this.markdownToHtml(message).replace("gptSays:", "");
 
   if (sent) {
     chatMsg.classList.add('chat-message', 'chat-message-sent');
