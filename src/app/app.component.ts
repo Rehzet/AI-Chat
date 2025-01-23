@@ -13,7 +13,8 @@ import {NgForOf} from "@angular/common";
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('textbox') textbox!: ElementRef;
+  // @ViewChild('textbox') textbox!: ElementRef;
+protected textbox = '';
 
   protected gptModels: string[] = [
     'gpt-4o-mini',
@@ -35,7 +36,11 @@ export class AppComponent implements OnInit {
 
   protected sendMessage() {
 
-    let textToSend = this.textbox.nativeElement.value;
+    let textToSend = this.textbox?.trim();
+
+    if (!textToSend || textToSend === '') {
+      return;
+    }
 
     this.textHistory += `userSays: ${textToSend}\n`;
 
@@ -75,7 +80,7 @@ export class AppComponent implements OnInit {
       this.showNewMessage(receivedMessage, false);
     });
 
-    this.textbox.nativeElement.value = "";
+    this.textbox = "";
   }
 
   showNewMessage(message: string, sent: boolean) {

@@ -1,7 +1,8 @@
 <div class="chat-container">
     <div id="chat-conversation" class="chat-conversation"></div>
     <div class="chat-writing">
-        <input #textbox type="text" id="textbox" placeholder="Escribe aquí tu mensaje" tabindex="0" autofocus (keydown)="onEnter($event)"/>
+        <input type="text" id="textbox" placeholder="Escribe aquí tu mensaje" tabindex="0" autofocus
+               [(ngModel)]="textbox" (keydown)="onEnter($event)"/>
         <select id="model-selector" [(ngModel)]="gptModel">
             <option *ngFor="let model of gptModels" [value]="model">{{model}}</option>
         </select>
